@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhoAmI</title>
+    <style>
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        #hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .cursor {
+            animation: blink 0.8s infinite;
+            font-weight: 100;
+        }
+
+        @keyframes blink {
+            0%, 100% {opacity: 1;}
+            50% {opacity: 0;}
+        }
+
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #hero h1 {
+            font-size: 4rem;
+            letter-spacing: 0.3em;
+            font-weight: 300;
+            
+        }
+
+        #hero p {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: #888;
+            opacity: 0;
+            transition: opacity 1.5s ease, transform 1.5s ease;
+            transform: translateY(20px);
+        }
+
+        #hero p.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        
+
+        #military {
+            padding: 100px 10%;
+        }
+
+        #military h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .mil-info {
+            text-align: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .mil-info.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mil-unit {
+            font-size: 1.3rem;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        .mil-period {
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+
+        .mil-role {
+            color: #888;
+        }
+
+        .mil-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #888;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .mil-award {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #ccc;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .mil-award.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        #certs {
+            padding: 100px 10%;
+        }
+
+        #certs h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .cert-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .cert-card {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s ease, transform 0.4s ease;
+        }
+
+        .cert-card.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .cert-card:hover {
+            transform: scale(1.05);
+            border-color: #444;
+        }
+
+        .cert-card h3 {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 0.3rem;
+        }
+
+        .cert-card p {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+
+        #footer {
+            padding: 60px 10%;
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        #footer p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #444;
+        }
+
+        
+        @media (max-width: 768px) {
+            #hero h1 {
+                font-size: 2.5rem;
+                letter-spacing: 0.15em;
+            }
+
+            #hero p {
+                font-size: 1rem;
+            }
+
+            #military {
+                padding: 60px 5%;
+            }
+
+            .mil-unit {
+                font-size: 1rem;
+            }
+
+            .mil-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            #hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .cert-cards {
+                grid-template-columns: 1fr;
+            }
+
+            #certs {
+                padding: 60px 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particles"></canvas>
+
+    <section id="hero">
+        <h1 id="typing"><span class="cursor">|</span></h1>
+        <p>'관리자'</p>
+    </section>
+
+    <section id="military">
+    <h2>Military Service</h2>
+    
+    <div class="mil-info">
+        <p class="mil-unit">기동함대사령부 제71기동전대 DDG-991 세종대왕함</p>
+        <p class="mil-period">2024. 01. 02. ~ 2026. 03. 01. (26개월)</p>
+        <p class="mil-role">정보통신병 20개월 → 정보통신부사관 6개월</p>
+    </div>
+
+    <div class="mil-cards">
+        <div class="card">
+            <h3>무선통신장비 운용</h3>
+            <p>MF/HF, VHF, UHF</p>
+        </div>
+        <div class="card">
+            <h3>위성통신장비 운용</h3>
+            <p>군용: MOSCOS, 군위성통신체계-Ⅱ</p>
+            <p>상용: SK Tellink</p>
+        </div>
+        <div class="card">
+            <h3>전산장비 유지보수 및 관리</h3>
+            <p>함내 전산장비 : PC 등 150+개 유지보수 및 관리</p>
+        </div>
+        <div class="card">
+            <h3>근거리전산망 유지보수 및 관리</h3>
+            <p>함내 네트워크 유지보수 및 관리</p>
+            <p>L2/L3 스위치, Cisco 라우터 관리</p>
+            <p>UTM 사이버방호체계 (AhnLab TrusGuard) 관리</p>
+            <p>VOIP G/W (AP-1800) 관리</p>
+        </div>
+        <div class="card">
+            <h3>비화망 관리</h3>
+            <p>기타 비화망 관리</p>
+        </div>
+        <div class="card">
+            <h3>화상회의 관리</h3>
+            <p>전군 VTC체계 (합참 + 3군협동) 회의접속 및 세팅</p>
+        </div>
+        <div class="card">
+            <h3>함정서버 관리</h3>
+            <p>IBM-S814 + Oracle OS 이용 함내 서버 운용/관리</p>
+        </div>
+    </div>
+
+    <div class="mil-award">
+        <p>🏅 2025년 후반기 71기동전대 근무유공자 표창 수여</p>
+    </div>
+    </section>
+
+    <section id="certs">
+        <h2>Certifications</h2>
+        <div class="cert-cards">
+            <div class="cert-card">
+                <h3>정보처리기능사</h3>
+                <p>26년 중 산업기사 취득예정</p>
+            </div>
+            <div class="cert-card">
+                <h3>컴퓨터활용능력 1급</h3>
+            </div>
+            <div class="cert-card">
+                <h3>ITQ 3종 A</h3>
+                <p>한글 / 한셀 / 파워포인트</p>
+            </div>
+            <div class="cert-card">
+                <h3>초경량비행장치</h3>
+                <p>무인멀티콥터 1종 조종자</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <p>Contact & Links</p>
+        <div class="footer-links">
+            <a href="https://github.com/Pyrite9" target="_blank">github</a>
+        </div>
+        <p class="copyright">© 2025. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById("particles");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const dots = [];
+        const DOT_COUNT = 80;
+
+        for (let i = 0; i < DOT_COUNT; i++) {
+            dots.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                radius: Math.random() * 1.5 + 0.5
+            });
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            dots.forEach(dot => {
+                dot.x += dot.vx;
+                dot.y += dot.vy;
+
+                if (dot.x < 0 || dot.x > canvas.width) dot.vx *= -1;
+                if (dot.y < 0 || dot.y > canvas.height) dot.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
+                ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+                ctx.fill();
+            });
+
+            requestAnimationFrame(drawParticles);
+        }
+
+        drawParticles();
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+
+
+        const text = "WHO AM I?";
+        const target = document.getElementById("typing");
+        
+        let index = 0;
+
+        function type() {
+            if (index < text.length) {
+                target.textContent = text.substring(0, index + 1);
+                target.innerHTML += '<span class="cursor">|</span>';
+                index++;
+                setTimeout(type, 150);
+            } else {
+                document.querySelector("#hero p").classList.add("show");
+            }
+        }
+
+        type();
+
+        document.querySelectorAll(".card").forEach((card, i) => {
+            card.style.transitionDelay = `${i * 0.15}s`;
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        }, {threshold: 0.3 });
+
+        document.querySelectorAll(".mil-info, .card, .mil-award, .cert-card").forEach(el => {
+            observer.observe(el);
+        });
+        
+        document.querySelectorAll(".cert-card").forEach((card, i) => {
+            card.style.transitionDelay = `${i * 0.15}s`;
+        });
+
+    </script>
+</body>
+</html>
