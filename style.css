@@ -1,0 +1,391 @@
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #0a0a0a;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', sans-serif;
+}
+#hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.cursor {
+    animation: blink 0.8s infinite;
+    font-weight: 100;
+}
+@keyframes blink {
+    0%, 100% {opacity: 1;}
+    50% {opacity: 0;}
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+#hero h1 {
+    font-size: 4rem;
+    letter-spacing: 0.3em;
+    font-weight: 300;
+}
+#hero p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #888;
+    opacity: 0;
+    transition: opacity 1.5s ease, transform 1.5s ease;
+    transform: translateY(20px);
+}
+#hero p.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+#military {
+    padding: 100px 10%;
+}
+#military h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+.mil-info {
+    text-align: center;
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+.mil-info.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.mil-unit {
+    font-size: 1.3rem;
+    color: #ccc;
+    margin-bottom: 0.5rem;
+}
+.mil-period {
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+.mil-role {
+    color: #888;
+}
+.mil-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+.card {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.card h3 {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 0.5rem;
+}
+.card p {
+    color: #888;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+.mil-award {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #ccc;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+.mil-award.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+#about {
+    padding: 100px 10%;
+}
+#about h2,
+#skills h2,
+#projects h2,
+#experience h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+.about-info {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+.about-info.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.about-info p {
+    color: #bbb;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 0.8rem;
+}
+.about-info p.about-sub {
+    color: #777;
+    font-size: 0.95rem;
+}
+#skills {
+    padding: 100px 10%;
+}
+.skill-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+.skill-card {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.skill-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.skill-card h3 {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+}
+.skill-card p {
+    color: #888;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+#projects {
+    padding: 100px 10%;
+}
+.project-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+.project-card {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.project-card:hover {
+    border-color: #444;
+}
+.project-card h3 {
+    font-size: 1.2rem;
+    color: #ddd;
+    margin-bottom: 0.4rem;
+}
+.project-meta {
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+.project-card p.project-desc {
+    color: #999;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+.project-card ul {
+    list-style: none;
+    margin-bottom: 1.2rem;
+    padding-left: 0;
+}
+.project-card ul li {
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    padding-left: 1rem;
+    position: relative;
+}
+.project-card ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: #555;
+}
+.project-links {
+    margin-top: auto;
+    padding-top: 0.5rem;
+}
+.project-links a {
+    color: #aaa;
+    text-decoration: none;
+    margin-right: 1rem;
+    font-size: 0.85rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 2px;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+.project-links a:hover {
+    color: #fff;
+    border-color: #777;
+}
+#experience {
+    padding: 100px 10%;
+}
+#certs {
+    padding: 100px 10%;
+}
+#certs h2 {
+    font-size: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+.cert-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+.cert-card {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.6s ease, transform 0.4s ease;
+}
+.cert-card.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+.cert-card:hover {
+    transform: scale(1.05);
+    border-color: #444;
+}
+.cert-card h3 {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 0.3rem;
+}
+.cert-card p {
+    color: #888;
+    font-size: 0.85rem;
+}
+#footer {
+    padding: 60px 10%;
+    text-align: center;
+    border-top: 1px solid #1a1a1a;
+}
+#footer p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+.footer-links {
+    margin-bottom: 2rem;
+}
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: #fff;
+}
+.copyright {
+    font-size: 0.8rem;
+    color: #444;
+}
+@media (max-width: 768px) {
+    #hero h1 {
+        font-size: 2.5rem;
+        letter-spacing: 0.15em;
+    }
+    #hero p {
+        font-size: 1rem;
+    }
+    #military {
+        padding: 60px 5%;
+    }
+    #about, #skills, #projects, #experience {
+        padding: 60px 5%;
+    }
+    .mil-unit {
+        font-size: 1rem;
+    }
+    .mil-cards {
+        grid-template-columns: 1fr;
+    }
+    .skill-cards {
+        grid-template-columns: 1fr;
+    }
+    .project-cards {
+        grid-template-columns: 1fr;
+    }
+    .cert-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 480px) {
+    #hero h1 {
+        font-size: 1.8rem;
+    }
+    .cert-cards {
+        grid-template-columns: 1fr;
+    }
+    #certs {
+        padding: 60px 5%;
+    }
+}
+
