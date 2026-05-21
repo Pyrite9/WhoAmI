@@ -44,13 +44,14 @@ body {
 }
 #hero h1 {
     font-size: 4rem;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.15em;
     font-weight: 300;
 }
 #hero p {
     margin-top: 1rem;
-    font-size: 1.2rem;
-    color: #888;
+    font-size: 1.6rem;
+    color: #aaa;
+    letter-spacing: 0.1em;
     opacity: 0;
     transition: opacity 1.5s ease, transform 1.5s ease;
     transform: translateY(20px);
@@ -353,7 +354,7 @@ body {
         letter-spacing: 0.15em;
     }
     #hero p {
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
     #military {
         padding: 60px 5%;

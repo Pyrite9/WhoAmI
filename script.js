@@ -32,7 +32,7 @@ window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 });
-const text = "KIM DONGGUN";
+const text = "주도적 트러블슈터";
 const target = document.getElementById("typing");
 let index = 0;
 function type() {
